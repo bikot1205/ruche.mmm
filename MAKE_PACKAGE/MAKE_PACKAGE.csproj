@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF4BD3F2-F796-4776-8420-EE43E5AC8EE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ruche.mmm</RootNamespace>
+    <AssemblyName>MAKE_PACKAGE</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>:: 1 ならソースもパッケージに含める
+set WITH_SRC=0
+
+if "$(ConfigurationName)"=="Release" (
+    set PACK_DIR=$(SolutionDir)package\ruche.mmm\
+) else (
+    set PACK_DIR=$(SolutionDir)package\ruche.mmm_$(ConfigurationName)\
+)
+set PACK_SRC_DIR=%25PACK_DIR%25src\
+
+if exist "%25PACK_DIR%25" rmdir /S /Q "%25PACK_DIR%25"
+mkdir "%25PACK_DIR%25"
+
+copy /Y "$(SolutionDir)common\*.txt" "%25PACK_DIR%25"
+
+if "%25WITH_SRC%25"=="1" (
+  mkdir "%25PACK_SRC_DIR%25"
+  mkdir "%25PACK_SRC_DIR%25common"
+  mkdir "%25PACK_SRC_DIR%25package"
+
+  copy /Y "$(SolutionDir)*.sln"        "%25PACK_SRC_DIR%25"
+  copy /Y "$(SolutionDir)*.txt"        "%25PACK_SRC_DIR%25"
+  copy /Y "$(SolutionDir)common\*.txt" "%25PACK_SRC_DIR%25common"
+)
+
+for /D %25%25d in ("$(SolutionDir)ruche.*" "$(SolutionDir)MAKE_PACKAGE") do (
+  copy /Y "%25%25~d\$(OutDir)\ruche.*.dll" "%25PACK_DIR%25"
+
+  if "%25WITH_SRC%25"=="1" (
+    mkdir "%25PACK_SRC_DIR%25%25%25~nxd"
+    copy /Y "%25%25~d\*.csproj"       "%25PACK_SRC_DIR%25%25%25~nxd\"
+    xcopy /E /Y "%25%25~d\src"        "%25PACK_SRC_DIR%25%25%25~nxd\src\"
+    xcopy /E /Y "%25%25~d\res"        "%25PACK_SRC_DIR%25%25%25~nxd\res\"
+    xcopy /E /Y "%25%25~d\Properties" "%25PACK_SRC_DIR%25%25%25~nxd\Properties\"
+  )
+)
+
+exit /b 0
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

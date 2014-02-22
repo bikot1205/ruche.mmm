@@ -1,0 +1,9 @@
+/MAKE_PACKAGE/bin
+/MAKE_PACKAGE/obj
+*.suo
+/ruche.mmm.LipAndCap/bin
+/ruche.mmm.LipAndCap/obj
+/package/ruche.mmm
+/package/ruche.mmm_Debug
+/manual
+/movie

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C8284144-E223-4B27-ADC6-FE69A850AC62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ruche.mmm</RootNamespace>
+    <AssemblyName>ruche.mmm.LipAndCap</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DxMath">
+      <HintPath>..\common\DxMath.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MikuMikuPlugin">
+      <HintPath>..\common\MikuMikuPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="src\caption\CaptionInfo.cs" />
+    <Compile Include="src\caption\Preset.cs" />
+    <Compile Include="src\caption\PresetDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\caption\PresetDialog.Designer.cs">
+      <DependentUpon>PresetDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\caption\PresetList.cs" />
+    <Compile Include="src\LipAndCapConfig.cs" />
+    <Compile Include="src\lip\converters\AlphaGlyphKanaConverter.cs" />
+    <Compile Include="src\lip\KanaDefine.cs" />
+    <Compile Include="src\lip\MorphInfoTable.cs" />
+    <Compile Include="src\lip\Preset.cs" />
+    <Compile Include="src\lip\PresetDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\lip\PresetDialog.Designer.cs">
+      <DependentUpon>PresetDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\lip\NativeFrameTableMaker.cs" />
+    <Compile Include="src\lip\timeline\KeyArea.cs" />
+    <Compile Include="src\lip\timeline\MorphTimelineMaker.cs" />
+    <Compile Include="src\lip\timeline\MorphTimelineTable.cs" />
+    <Compile Include="src\lip\timeline\Timeline.cs" />
+    <Compile Include="src\lip\timeline\LipTimelineMaker.cs" />
+    <Compile Include="src\lip\timeline\LipTimelineSet.cs" />
+    <Compile Include="src\lip\timeline\TimelineTableBase.cs" />
+    <Compile Include="src\ModelPresetRelationTable.cs" />
+    <Compile Include="src\util\BooleanYesNoConverter.cs" />
+    <Compile Include="src\util\ConfigKeeper.cs" />
+    <Compile Include="src\lip\converters\DigitKanaConverter.cs" />
+    <Compile Include="src\lip\LipKanaMaker.cs" />
+    <Compile Include="src\lip\LinkType.cs" />
+    <Compile Include="src\lip\MorphInfo.cs" />
+    <Compile Include="src\lip\LipId.cs" />
+    <Compile Include="src\lip\LipMorphSet.cs" />
+    <Compile Include="src\lip\PresetList.cs" />
+    <Compile Include="src\lip\LipSyncMaker.cs" />
+    <Compile Include="src\lip\LipSyncUnit.cs" />
+    <Compile Include="src\lip\MorphWeightData.cs" />
+    <Compile Include="src\lip\converters\PhoneticConverter.cs" />
+    <Compile Include="src\lip\converters\KatakanaConverter.cs" />
+    <Compile Include="src\LipAndCap.cs" />
+    <Compile Include="src\LipAndCapDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\LipAndCapDialog.Designer.cs">
+      <DependentUpon>LipAndCapDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\FrameSpanType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\lip\converters\KatakanaLipConverter.cs" />
+    <Compile Include="src\lip\MorphWeightDataList.cs" />
+    <Compile Include="src\util\HorizontalAlignmentConverter.cs" />
+    <Compile Include="src\util\SingleFixedConverter.cs" />
+    <Compile Include="src\util\FontNameConverter.cs" />
+    <Compile Include="src\util\PropertyOrder.cs" />
+    <Compile Include="src\util\TextElementEnumerable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\caption\PresetDialog.resx">
+      <DependentUpon>PresetDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\LipAndCapDialog.resx">
+      <DependentUpon>LipAndCapDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\lip\PresetDialog.resx">
+      <DependentUpon>PresetDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="res\Icon20.bmp" />
+    <Content Include="res\Icon32.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

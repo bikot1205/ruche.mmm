@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKE_PACKAGE", "MAKE_PACKAGE\MAKE_PACKAGE.csproj", "{AF4BD3F2-F796-4776-8420-EE43E5AC8EE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C8284144-E223-4B27-ADC6-FE69A850AC62} = {C8284144-E223-4B27-ADC6-FE69A850AC62}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ruche.mmm.LipAndCap", "ruche.mmm.LipAndCap\ruche.mmm.LipAndCap.csproj", "{C8284144-E223-4B27-ADC6-FE69A850AC62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF4BD3F2-F796-4776-8420-EE43E5AC8EE0}.Debug|x86.ActiveCfg = Debug|x86
+		{AF4BD3F2-F796-4776-8420-EE43E5AC8EE0}.Debug|x86.Build.0 = Debug|x86
+		{AF4BD3F2-F796-4776-8420-EE43E5AC8EE0}.Release|x86.ActiveCfg = Release|x86
+		{AF4BD3F2-F796-4776-8420-EE43E5AC8EE0}.Release|x86.Build.0 = Release|x86
+		{C8284144-E223-4B27-ADC6-FE69A850AC62}.Debug|x86.ActiveCfg = Debug|x86
+		{C8284144-E223-4B27-ADC6-FE69A850AC62}.Debug|x86.Build.0 = Debug|x86
+		{C8284144-E223-4B27-ADC6-FE69A850AC62}.Release|x86.ActiveCfg = Release|x86
+		{C8284144-E223-4B27-ADC6-FE69A850AC62}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
